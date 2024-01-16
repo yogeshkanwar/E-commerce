@@ -33,7 +33,7 @@ public class RegistrationController {
 		    
 		}
 	     User user=dto.toEntity();  
-		 userService.add(user);
+		 userService.register(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
 					 
 	}

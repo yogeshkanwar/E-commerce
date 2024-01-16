@@ -10,7 +10,7 @@ import com.example.Social.Util.CrudService;
 
 @Service
 public class UserService extends CrudService<User>{
-	//private final  UserRepository repository;
+	private final  UserRepository repository;
 
 	@Autowired
 	public UserService(UserRepository repository) {
@@ -18,14 +18,21 @@ public class UserService extends CrudService<User>{
 		this.repository=repository;
 	}
 	
-//	public User add(User user) { 	
-//		return add(user); 
-//	}
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+
+	public void register(User user) {
+		User u=new User();
+		u.setEmail(user.getEmail());
+		u.setPassword(user.getPassword());
+		add(u);
+		
+	}
+
+	public Optional<User> getByUser(String userName) {
+		return repository.findByEmailOrPhone(userName); 
+	}
 	
-//	@Override
-//	public Optional<User> getById(Long id) {
-//		return getById(id); 
-//	}
 
 	
 

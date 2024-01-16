@@ -47,8 +47,6 @@ public class RegistrationDTO {
 	public User toEntity() {
 	        User userEntity = new User();
 	        userEntity.setPhone(phone);
-	        userEntity.setEmail(email);
-	        userEntity.setPassword(password);
 	        userEntity.setCretedDate(LocalDateTime.now());
 	        return userEntity;
 	    }
