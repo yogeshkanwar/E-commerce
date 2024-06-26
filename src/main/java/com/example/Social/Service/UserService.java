@@ -22,10 +22,9 @@ public class UserService extends CrudService<User>{
 //    private PasswordEncoder passwordEncoder;
 
 	public void register(User user) {
-		User u=new User();
-		u.setEmail(user.getEmail());
-		u.setPassword(user.getPassword());
-		add(u);
+		user.setEmail(user.getEmail());
+		user.setPassword(user.getPassword());
+		super.add(user);
 		
 	}
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Post List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .post p {
+            color: #888;
+        }
+        .post img {
+            max-width: 100%;
+            display: block;
+            margin-top: 10px;
+        }
+        .post .like {
+            margin-top: 10px;
+        }
+        .like-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .like-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Post List</h1>
+        <div th:each="post : ${posts}" class="post">
+            <p th:text="${post.time}"></p>
+            <p th:text="${post.date	}"></p>
+            <h2 th:text="${post.caption}"></h2>
+            
+            <img th:src="@{'/uploads/' + ${post.imagePath}}" alt="Image" th:if="${post.imagePath}" />
+            <div class="like">
+                <p><span th:text="${post.likes}"></span> Likes</p>
+                <form th:action="@{'/post/like/' + ${post.id}}" method="post">
+                    <button class="like-button" type="submit">Like</button>
+                </form>
+            </div>
+            <div>
+               <form th:action="@{'/post/delete/' + ${post.id}}" method="get">
+                <button type="submit">Delete</button>
+               </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
