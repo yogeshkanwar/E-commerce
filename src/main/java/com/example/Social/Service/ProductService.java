@@ -1,5 +1,8 @@
 package com.example.Social.Service;
 
+import java.util.List;
+
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.stereotype.Service;
 import com.example.Social.Entity.Product;
 import com.example.Social.Repository.ProductRepository;
@@ -13,6 +16,10 @@ public class ProductService extends CrudService<Product>{
 	public ProductService(ProductRepository repository) {
 		super(repository);
 		this.repository=repository;
+	}
+
+	public List<Product> getAllProduct(Integer page, Integer size) {
+		return repository.findAll(null, null);
 	}
 	
 	

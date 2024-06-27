@@ -1,5 +1,7 @@
 package com.example.Social.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +41,16 @@ public class ProductController {
 		return ResponseEntity.ok().body(product);
 
 	}
+	
+	@GetMapping
+	public ResponseEntity<?> getProduct(@RequestParam Integer page,@RequestParam Integer size) throws Exception{
+		List<Product> list = service.getAllProduct(page,size);
+	}
+
+	
+	
+	
+	
 	
 	
 
