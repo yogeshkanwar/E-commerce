@@ -2,7 +2,10 @@ package com.example.Social.Service;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.Social.Entity.Product;
 import com.example.Social.Repository.ProductRepository;
@@ -19,7 +22,10 @@ public class ProductService extends CrudService<Product>{
 	}
 
 	public List<Product> getAllProduct(Integer page, Integer size) {
-		return repository.findAll(null, null);
+		Sort sort = Sort.by("id").descending();
+	    Pageable pageable = PageRequest.of(page, size,sort);
+	    Page<Product> productPage = repository.findAll(pageable);
+	    return productPage.getContent(); 
 	}
 	
 	

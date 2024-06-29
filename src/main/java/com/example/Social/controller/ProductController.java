@@ -45,6 +45,7 @@ public class ProductController {
 	@GetMapping
 	public ResponseEntity<?> getProduct(@RequestParam Integer page,@RequestParam Integer size) throws Exception{
 		List<Product> list = service.getAllProduct(page,size);
+		return ResponseEntity.ok().body(list);
 	}
 
 	
