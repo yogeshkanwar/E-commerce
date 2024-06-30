@@ -18,6 +18,7 @@ public class User {
 	private String age;
 	private LocalDateTime cretedDate;
 	private String imagePath;
+	private boolean enable;
 	
 	public Long getId() {
 		return id;
@@ -72,6 +73,12 @@ public class User {
 	}
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	public boolean isEnable() {
+		return enable;
+	}
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 	
 	
